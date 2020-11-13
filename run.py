@@ -45,11 +45,14 @@ def paintapp():
 
         name = '%020x' % random.randrange(16**20)
         inname = TMPDIR + f'A_{name}.png'
-        outname = TMPDIR + f'A_{name}.png'
+        outname = TMPDIR + f'B_{name}.png'
+        outtouch = TMPDIR + f'B_{name}'
         img.save(inname)
-        while not os.path.exists(outname):
+        while not os.path.exists(outtouch):
             time.sleep(.01)
         # return send_file(outname, mimetype='image/jpeg')
+        # time.sleep(1)
+        # Image.open(outname).show()
         return b64encode(open(outname, "rb").read())
         # return jsonify({'status': 'success', 'vase': 'asdf'})
 
