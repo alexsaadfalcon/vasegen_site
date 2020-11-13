@@ -10,7 +10,10 @@ var numVases = 5;
 var fill_value = false;
 var stroke_value = true;
 var canvas_data = {"pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": []}
-                        
+
+ctx.fillStyle = "#FFFFFF";
+ctx.fillRect(0, 0, 512, 512);
+
 function color(color_value){
     ctx.strokeStyle = color_value;
     ctx.fillStyle = color_value;
@@ -252,4 +255,23 @@ function save(){
     
     $.post("/", { save_fname: filename, save_cdata: data, save_image: image });
     alert(filename + " saved");
-} 
+}
+
+function convert_success(resp) {
+    document.getElementById("vase").src = 'data:image/jpg;base64,' + resp;
+//    console.log('resp');
+//    console.log(resp);
+}
+
+function convert() {
+    var image = canvas.toDataURL('image/png');
+
+    resp = $.ajax({
+        type: "POST",
+        url: "/",
+        data: { drawn_image: image },
+        success: convert_success,
+//        dataType: "json",
+    });
+
+}

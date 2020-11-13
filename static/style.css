@@ -16,6 +16,14 @@
     //height    : 256px;
 }
 
+#vase {
+    position  : absolute;
+    left      : 653px;
+    top       : 50px;
+    //width     : 256px;
+    //height    : 256px;
+}
+
 #colorset {
     position  : absolute;
     left      : 0px;
@@ -28,74 +36,26 @@
     left      : 500px;
 }
 
-#penciltool {
+#toolset button {
     //background: #358128;
     background: #3366cc;
     color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
+    width     : 100px;
+    height    : 30px;
     border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
+    -webkit-border-radius: 0 5px 5px 0;
     -moz-border-radius: 0 15px 15px 0;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
-#linetool {
-    //background: #358128;
-    background: #3366cc;
-    color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
-    border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
-    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+#toolset #convert {
+    background: #ff0000;
 }
 
-#rectangletool {
-    //background: #358128;
-    background: #3366cc;
-    color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
-    border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
-    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+#toolset #erasertool {
+    background: #777777;
 }
 
-#circletool {
-    //background: #358128;
-    background: #3366cc;
-    color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
-    border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
-    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+#toolset #resettool {
+    background: #777777;
 }
-
-#erasertool {
-    //background: #358128;
-    background: #3366cc;
-    color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
-    border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
-    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
-}
-
-#resettool {
-    //background: #358128;
-    background: #3366cc;
-    color     : #f3f3f3;
-    width     : 80px;
-    height    : 25px;
-    border    : 1px solid #33842a;
-    -webkit-border-radius: 0 15px 15px 0;
-    -moz-border-radius: 0 15px 15px 0;
-    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
-}                

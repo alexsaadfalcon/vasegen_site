@@ -9,31 +9,38 @@
                 <fieldset id="toolset">
                 <br>
                 <br>
-                <button id="penciltool" type="button" style="height: 25px; width: 100px;" onclick="pencil()">Pencil</button>
+                <button id="convert" type="button" onclick="convert()">VaseGen</button>
                 <br>
                 <br>
                 <br>
-                <button id="linetool" type="button" style="height: 25px; width: 100px;" onclick="line()">Line</button>
+                <button id="penciltool" type="button" onclick="pencil()">Pencil</button>
                 <br>
                 <br>
                 <br>
-                <button id="rectangletool" type="button" style="height: 25px; width: 100px;" onclick="rectangle()">Rectangle</button> 
+                <button id="linetool" type="button" onclick="line()">Line</button>
                 <br>
                 <br>
                 <br>
-                <button id="circletool" type="button" style="height: 25px; width: 100px;" onclick="circle()">Circle</button> 
+                <button id="rectangletool" type="button" onclick="rectangle()">Rectangle</button>
                 <br>
                 <br>
                 <br>
-                <button id="erasertool" type="button" style="height: 25px; width: 100px;" onclick="eraser()">Eraser</button> 
+                <button id="circletool" type="button" onclick="circle()">Circle</button>
                 <br>
                 <br>
                 <br>
-                <button id="resettool" type="button" style="height: 25px; width: 100px;" onclick="reset()">Reset</button> 
+                <button id="erasertool" type="button" onclick="eraser()">Eraser</button>
+                <br>
+                <br>
+                <br>
+                <button id="resettool" type="button" onclick="reset()">Reset</button>
                 </fieldset>
             </td>
             <td>
                 <canvas id="paint" width="512" height="512" style="border: 5px solid #000000;"></canvas>
+            </td>
+            <td>
+                <img src='/vase' id="vase" width="512" height="512" style="border: 5px solid #000000;"/>
             </td>
             </tr>
         </table></p>
