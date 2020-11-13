@@ -3,9 +3,9 @@ set -ex
 # Copy and enable the daemon
 cp server/vasegen.service /etc/systemd/system/vasegen.service
 
-systemctl start numart
-systemctl status numart
-systemctl enable numart
+systemctl start vasegen
+systemctl status vasegen
+systemctl enable vasegen
 
 # Setup the public facing server (NGINX)
 apt install nginx
