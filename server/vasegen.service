@@ -3,7 +3,8 @@ Description=uWSGI VaseGen server instance
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/.local/bin/uwsgi -H /home/ubuntu/venv/ --master --processes 4 --threads 2 --http :5000 --manage-script-name --python-path /usr/bin/python3 --mount /=wsgi:run
+ExecStart=/home/ubuntu/.local/bin/uwsgi -H /home/ubuntu/venv/ --master --processes 4 --threads 2 \
+--http :5000 --manage-script-name --python-path /home/ubuntu/vasegen_site/ --mount /=wsgi:app
 RuntimeDirectory=/home/ubuntu/vasegen_site
 Restart=always
 KillSignal=SIGQUIT
