@@ -63,6 +63,7 @@ function outline(){
 }
                
 function reset(){
+    ctx.fillStyle = "#ffffff";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, 512, 512);
     canvas_data = { "pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": [] }

@@ -1,5 +1,6 @@
 import os
 import sys
+import glob
 import json
 from flask import Flask, render_template, request, redirect, url_for, \
     jsonify, send_file
@@ -67,6 +68,17 @@ def vase():
 @app.route('/vase_outline')
 def vase_outline():
     return send_file('vase_outline.jpg', mimetype='image/jpeg')
+
+for n, f in glob.glob('fragments/*.jpg'):
+    img_id = int(os.path.splitext(os.path.split(f)[-1])[0])
+    @app.route(f'/fragment/{n}')
+    def frag():
+        return send_file(f, mimetype='image/jpeg')
+
+    @app.route(f'/metid/{img_id}')
+    def frag():
+        return send_file(f, mimetype='image/jpeg')
+
 
 # @app.route('/save', methods=['GET', 'POST'])
 # def save():

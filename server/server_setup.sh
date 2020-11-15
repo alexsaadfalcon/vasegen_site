@@ -1,22 +1,25 @@
 set -ex
 
-# Copy and enable the daemon
-cp server/vasegen.service /etc/systemd/system/vasegen.service
+# Download fragments image directory
+wget https://vasegen-matched-512.s3.us-east-2.amazonaws.com/latest_net_G.pth
 
-systemctl start vasegen
-systemctl status vasegen
-systemctl enable vasegen
+
+# Copy and enable the daemon
+sudo cp server/vasegen.service /etc/systemd/system/vasegen.service
+
+sudo systemctl start vasegen
+sudo systemctl status vasegen
+sudo systemctl enable vasegen
 
 # Setup the public facing server (NGINX)
-apt install nginx
+sudo apt install nginx
 
 # CAREFUL HERE. If you are using default, maybe skip this
-rm /etc/nginx/sites-enabled/default
+# rm /etc/nginx/sites-enabled/default
 
-cp server/vasegen.nginx /etc/nginx/sites-enabled/vasegen.nginx
-update-rc.d nginx enable
-service nginx restart
-
+sudo cp server/vasegen.nginx /etc/nginx/sites-enabled/vasegen.nginx
+sudo update-rc.d nginx enable
+sudo service nginx restart
 
 # Optionally add SSL support via Let's Encrypt:
 # https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
