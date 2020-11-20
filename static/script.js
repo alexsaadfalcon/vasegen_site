@@ -6,7 +6,9 @@ var curX, curY, prevX, prevY;
 var hold = false;
 ctx.lineWidth = 7;
 var vasePreset = 1;
-var numVases = 5;
+var vaseFragment = 1;
+var numVases = 10;
+var numFrags = 17425;
 var fill_value = false;
 var stroke_value = true;
 var canvas_data = {"pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": []}
@@ -20,11 +22,7 @@ function color(color_value){
 }    
 
 function update_lw() {
-    document.getElementById("line_width_val").innerText = 'Line Width ' + String(ctx.lineWidth);
-}
-
-function update_vase() {
-    document.getElementById("vase_preset_val").innerText = 'Vase Preset ' + String(vasePreset);
+    document.getElementById("line_width_val").innerText = 'Brush Size ' + String(ctx.lineWidth);
 }
 
 function add_pixel(){
@@ -40,16 +38,6 @@ function reduce_pixel(){
         ctx.lineWidth -= 1;
     }
     update_lw();
-}
-
-function next_vase() {
-    vasePreset = (vasePreset % numVases) + 1;
-    update_vase();
-}
-
-function prev_vase() {
-    vasePreset = (vasePreset - 2 + numVases) % numVases + 1;
-    update_vase();
 }
         
 function fill(){
@@ -67,6 +55,51 @@ function reset(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, 512, 512);
     canvas_data = { "pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": [] }
+}
+
+function update_vase() {
+    document.getElementById("vase_preset_val").innerText = 'Vase Outline ' + String(vasePreset);
+    var preset = new Image();
+    preset.src = 'preset/' + String(vasePreset);
+    preset.onload = function(){
+        ctx.drawImage(preset, 0, 0);
+    };
+}
+
+function next_vase() {
+    vasePreset = (vasePreset % numVases) + 1;
+    update_vase();
+}
+
+function prev_vase() {
+    vasePreset = (vasePreset - 2 + numVases) % numVases + 1;
+    update_vase();
+}
+
+function update_frag() {
+    document.getElementById("vase_fragment").innerText = 'Vase Fragment ' + String(vaseFragment);
+    var frag = new Image();
+    frag.src = 'fragment/' + String(vaseFragment);
+    frag.onload = function(){
+        var pattern = ctx.createPattern(this, "repeat");
+        ctx.fillStyle = pattern;
+        ctx.fill();
+    };
+}
+
+function random_fragment() {
+    vaseFragment = Math.floor((Math.random() * numFrags));
+    update_frag();
+}
+
+function next_frag() {
+    vaseFragment = (vaseFragment % numFrags) + 1;
+    update_frag();
+}
+
+function prev_frag() {
+    vaseFragment = (vaseFragment - 2 + numFrags) % numFrags + 1;
+    update_frag();
 }
         
 // pencil tool
