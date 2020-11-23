@@ -2,8 +2,8 @@
 const default_magnification = 1;
 const default_tool = get_tool_by_name("Pencil");
 
-const default_canvas_width = 683;
-const default_canvas_height = 384;
+const default_canvas_width = 512;
+const default_canvas_height = 512;
 let my_canvas_width = default_canvas_width;
 let my_canvas_height = default_canvas_height;
 
@@ -31,7 +31,7 @@ window.default_brush_shape = "circle";
 window.default_brush_size = 4;
 window.default_eraser_size = 8;
 window.default_airbrush_size = 9;
-window.default_pencil_size = 1;
+window.default_pencil_size = 7;
 window.default_stroke_size = 1; // applies to lines, curves, shape outlines
 // declared like this for Cypress tests
 window.brush_shape = default_brush_shape;
@@ -259,9 +259,9 @@ $G.on("eye-gaze-mode-toggled", ()=> {
 });
 
 
-$canvas_area.on("user-resized", (_event, _x, _y, unclamped_width, unclamped_height) => {
-	resize_canvas_and_save_dimensions(unclamped_width, unclamped_height);
-});
+//$canvas_area.on("user-resized", (_event, _x, _y, unclamped_width, unclamped_height) => {
+//	resize_canvas_and_save_dimensions(unclamped_width, unclamped_height);
+//});
 
 $G.on("resize", () => { // for browser zoom, and in-app zoom of the canvas
 	update_canvas_rect();

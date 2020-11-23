@@ -62,7 +62,7 @@ function $FontBox(){
 			display: "block",
 			width: 16,
 			height: 16,
-			backgroundImage: "url(images/text-tools.png)",
+			backgroundImage: "url(/static/jspaint/images/text-tools.png)",
 			backgroundPosition: `${xi*-16}px 0px`
 		});
 		$button.on("click", () => {

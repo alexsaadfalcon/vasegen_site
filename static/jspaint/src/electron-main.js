@@ -23,7 +23,7 @@ const createWindow = () => {
 		height: 600,
 		minWidth: 260,
 		minHeight: 360,
-		icon: require("path").join(__dirname, "../images/icons",
+		icon: require("path").join("/static/jspaint/images/icons",
 			process.platform === "win32" ?
 				"windows.ico" :
 				process.platform === "darwin" ?

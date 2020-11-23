@@ -99,6 +99,11 @@ colors = [
 ]
 colors = ['#' + color for color in colors]
 
+@app.route('/paint', methods=['GET'])
+def oldpaint():
+    if request.method == 'GET':
+        context = {'colors':colors, 'per_row':3}
+        return render_template("paint.html", **context)
 
 @app.route('/', methods=['GET', 'POST'])
 def paintapp():

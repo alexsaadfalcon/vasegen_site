@@ -240,7 +240,7 @@ const $choose_magnification = $Choose(
 		const i = magnifications.indexOf(scale);
 		const secret = scale === 10; // 10x is secret
 		const chooser_canvas = ChooserCanvas(
-			"images/options-magnification.png",
+			"/static/jspaint/images/options-magnification.png",
 			is_chosen, // invert if chosen
 			39, (secret ? 2 : 13), // width, height of destination canvas
 			i*23, 0, 23, 9, // x, y, width, height from source image
@@ -303,7 +303,7 @@ const $choose_transparent_mode = $Choose(
 	(option, _is_chosen, reuse_canvas) => {
 		const sw = 35, sh = 23; // width, height from source image
 		const b = 2; // margin by which the source image is inset on the destination
-		const theme_folder = `images/${get_theme().replace(/\.css/, "")}`;
+		const theme_folder = `/static/jspaint/images/${get_theme().replace(/\.css/, "")}`;
 		return ChooserCanvas(
 			`${theme_folder}/options-transparency.png`,
 			false, // never invert it

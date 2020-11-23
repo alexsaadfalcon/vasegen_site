@@ -31,7 +31,7 @@ function $ToolBox(tools, is_extras){
 			const background_image = theme_dev_blob_url ? (
 				`url(${theme_dev_blob_url})`
 			) : (
-				use_svg ? `url(images/${get_theme().match(/dark.css|occult.css/) ? "dark" : "classic"}/tools.svg)` : `url(${theme_folder}/tools.png)`
+				use_svg ? `url(/static/jspaint/images/${get_theme().match(/dark.css|occult.css/) ? "dark" : "classic"}/tools.svg)` : `url(${theme_folder}/tools.png)`
 			);
 			$icon.css({
 				display: "block",

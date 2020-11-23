@@ -18,7 +18,7 @@ function show_help() {
 // awkward shim to interface with my own stupid code
 window.TITLEBAR_ICON_SIZE = 16;
 window.$Icon = ()=> {
-	return $("<img src='images/chm-16x16.png'>");
+	return $("<img src='/static/jspaint/images/chm-16x16.png'>");
 };
 
 // shared code with 98.js.org

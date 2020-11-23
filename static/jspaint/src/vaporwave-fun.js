@@ -50,10 +50,10 @@
 		rotologo.classList.add("rotologo");
 		if (frameElement) {
 			frameElement.parentElement.appendChild(rotologo);
-			rotologo.src = "images/logo/98.js.org.svg";
+			rotologo.src = "/static/jspaint/images/logo/98.js.org.svg";
 		} else {
 			document.body.appendChild(rotologo);
-			rotologo.src = "images/98.js.org.svg";
+			rotologo.src = "/static/jspaint/images/98.js.org.svg";
 		}
 
 		$(rotologo).css({

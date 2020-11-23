@@ -306,7 +306,7 @@ body,
 	cursor: pointer;
 }
 .help-window li:before {
-	background-image: url("../../images/help-icons.png");
+	background-image: url("/static/jspaint/images/help-icons.png");
 }
 .help-window:not(.focused) .item.selected {
 	background-color: var(--ButtonFace);
