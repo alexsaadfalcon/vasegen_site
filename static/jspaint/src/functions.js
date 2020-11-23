@@ -26,7 +26,7 @@ function make_vasegen_button() {
 
 function make_col_div(n) {
     const div = E("div");
-    return $(div).addClass("col-sm-" + String(n));
+    return $(div).addClass("col-xl-" + String(n));
 }
 
 function make_vasegen_image() {

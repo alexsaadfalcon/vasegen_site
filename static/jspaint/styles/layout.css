@@ -410,7 +410,14 @@ html, body, .jspaint {
 	position: relative;
 	overflow: auto;
 }
+.max-512 {
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
+}
 .canvas-row {
+    width: 100%;
 }
 .canvas-container {
 }
@@ -430,6 +437,10 @@ html, body, .jspaint {
 	padding: none;
 	display: block;
 	z-index: 2;
+    height: auto;
+    width: 540px;
+    min-width: 60%;
+    max-width: 100%;
 }
 .handle {
 	position: absolute;
