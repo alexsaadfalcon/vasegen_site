@@ -400,23 +400,35 @@ html, body, .jspaint {
 	height: 100%;
 }
 
-
 .canvas-area {
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
 	flex: 1;
-	display: inline-block !important;
-	!position: relative;
+	display: block !important;
+	position: relative;
 	overflow: auto;
-	padding: 3px;
+}
+.canvas-row {
+}
+.canvas-container {
 }
 .vasegen-button {
-	display: inline-block;
+	display: block;
+	width: 100px;
+	height: 50px;
+    !margin: 0;
+    !position: absolute;
 }
 .vasegen-image {
-	display: inline-block;
+	display: block;
 }
 .main-canvas {
 	position: absolute;
-	display: inline-block;
+	margin: none;
+	padding: none;
+	display: block;
 	z-index: 2;
 }
 .handle {

@@ -155,22 +155,21 @@ const $app = $(E("div")).addClass("jspaint").appendTo("body");
 const $V = $(E("div")).addClass("vertical").appendTo($app);
 const $H = $(E("div")).addClass("horizontal").appendTo($V);
 
-const $canvas_container = $(E("div")).addClass("container justify-content-start canvas-container").appendTo($H);
-const $canvas_area = $(E("div")).addClass("row justify-content-start canvas-area").appendTo($canvas_container);
+const $canvas_area = $(E("div")).addClass("canvas-area").appendTo($H);
+const $canvas_row = $(E("div")).addClass("row").appendTo($H);
 
-const $canvas_col1 = make_col_div(5).appendTo($canvas_area)
-const $canvas = $(canvas).appendTo($canvas_col1);
+const $canvas = $(canvas).appendTo($canvas_area);
 $canvas.attr("touch-action", "none");
 
-const $canvas_col2 = make_col_div(2).appendTo($canvas_area)
-vasegen = make_vasegen_button()
-vasegen.classList.add("vasegen-button");
-const $vasegen = $(vasegen).appendTo($canvas_col2)
+const $canvas_col1 = make_col_div(2).appendTo($canvas_row)
+vasegen_button = make_vasegen_button()
+vasegen_button.classList.add("vasegen-button");
+const $vasegen_button = $(vasegen_button).appendTo($canvas_col1)
 
-const $canvas_col3 = $(make_col_div(5)).appendTo($canvas_area)
+const $canvas_col2 = $(make_col_div(6)).addClass("canvas-area").appendTo($canvas_row)
 vasegen_image = make_vasegen_image()
 vasegen_image.classList.add("vasegen-image");
-const $vasegen_image = $(vasegen_image).appendTo($canvas_col3)
+const $vasegen_image = $(vasegen_image).appendTo($canvas_col2)
 
 let canvas_bounding_client_rect = canvas.getBoundingClientRect(); // cached for performance, updated later
 const getRect = ()=> ({left: 0, top: 0, width: canvas.width, height: canvas.height, right: canvas.width, bottom: canvas.height})
@@ -1441,6 +1440,14 @@ $canvas_area.on("pointerdown", e => {
 		}
 	}
 });
+$canvas_row.on("pointerdown", e => {
+	if(e.button === 0){
+        if($vasegen_button.is(e.target)){
+		    vasegen_button.onClick();
+		}
+    }
+});
+
 
 function prevent_selection($el) {
 	$el.on("mousedown selectstart contextmenu", (e) => {

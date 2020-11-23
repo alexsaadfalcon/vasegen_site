@@ -20,22 +20,22 @@ const exclusive_params = [
 function make_vasegen_button() {
     const button = E("button");
     button.innerText = "Convert to Vase";
-//    button.onClick = ;
+    button.onClick = () => {console.log('test')};
     return button;
 }
 
 function make_col_div(n) {
     const div = E("div");
-    return $(div).addClass("col-md-" + String(n));
+    return $(div).addClass("col-sm-" + String(n));
 }
 
 function make_vasegen_image() {
-    const image = E("image");
-    image.src = "/vase";
-    image.href = "/vase";
-    image.width = 512;
-    image.height = 512;
-    return image
+    const img = E("img");
+    img.src = "/vase";
+    img.href = "/vase";
+    img.width = 512;
+    img.height = 512;
+    return img
 }
 
 function get_all_url_params() {
