@@ -20,8 +20,25 @@ const exclusive_params = [
 function make_vasegen_button() {
     const button = E("button");
     button.innerText = "Convert to Vase";
-    button.onClick = () => {console.log('test')};
+    button.onClick = () => vasegen();
     return button;
+}
+
+function convert_success(resp) {
+    document.getElementById("vase").src = 'data:image/jpg;base64,' + resp;
+}
+
+function vasegen() {
+    var image = canvas.toDataURL('image/png');
+
+    resp = $.ajax({
+        type: "POST",
+        url: "/",
+        data: { drawn_image: image },
+        success: convert_success,
+//        dataType: "json",
+    });
+
 }
 
 function make_col_div(n) {
@@ -31,6 +48,7 @@ function make_col_div(n) {
 
 function make_vasegen_image() {
     const img = E("img");
+    img.id = "vase";
     img.src = "/vase";
     img.href = "/vase";
     img.width = 512;
