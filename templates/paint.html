@@ -1,83 +1,97 @@
 {% include "base.html" %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
     <body onload="pencil()">
-        <p><h2 id="title">Paint App</h2></p>
-        <p><table>
-            <tr>
-            <td>
-                <fieldset id="toolset">
-                <br>
-                <br>
-                <button id="convert" type="button" onclick="convert()">VaseGen</button>
-                <br>
-                <br>
-                <br>
-                <button id="penciltool" type="button" onclick="pencil()">Pencil</button>
-                <br>
-                <br>
-                <br>
-                <button id="linetool" type="button" onclick="line()">Line</button>
-                <br>
-                <br>
-                <br>
-                <button id="rectangletool" type="button" onclick="rectangle()">Rectangle</button>
-                <br>
-                <br>
-                <br>
-                <button id="circletool" type="button" onclick="circle()">Circle</button>
-                <br>
-                <br>
-                <br>
-                <button id="erasertool" type="button" onclick="eraser()">Eraser</button>
-                <br>
-                <br>
-                <br>
-                <button id="resettool" type="button" onclick="reset()">Clear</button>
-                </fieldset>
-            </td>
-            <td>
-                <canvas id="paint" width="512" height="512" style="border: 5px solid #000000;"></canvas>
-            </td>
-            <td>
-                <img src='/vase' id="vase" width="512" height="512" style="border: 5px solid #000000;"/>
-            </td>
-            </tr>
-        </table></p>
-        <fieldset id="colorset">
-        <table>
+        <!--<p><h2 id="title">Paint App</h2></p>-->
+        <div class="container">
+        <div class="row centered" id="toprow">
+            <div class="col-lg-2 centered">
+                <p><table>
+                    <tr>
+                    <td>
+                        <fieldset id="toolset">
+                        <br>
+                        <button id="convert" type="button" onclick="convert()">VaseGen</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="penciltool" type="button" onclick="pencil()">Pencil</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="linetool" type="button" onclick="line()">Line</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="rectangletool" type="button" onclick="rectangle()">Rectangle</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="circletool" type="button" onclick="circle()">Circle</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="erasertool" type="button" onclick="eraser()">Eraser</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button id="resettool" type="button" onclick="reset()">Clear</button>
+                        <br>
+                        <br>
+                        <br>
+                        </fieldset>
+                    </td>
+                    </tr>
+                </table></p>
+            </div>
+            <div class="col-lg-5 centered img-width">
+                <canvas id="paint" width="512" height="512"></canvas>
+            </div>
+            <div class="col-lg-5 centered img-width">
+                <img src='/vase' id="vase"/>
+            </div>
+        </div>
+        </div>
+
+        <div id="toolset2">
+        <div class="container" id="controls">
             <!--<tr>-->
                 <!--<td>Shape Options-->
                 <!--<td><button style="height: 20px; width: 80px" onclick="outline()">Outline</button>-->
                 <!--<td><button style="height: 20px; width: 80px;" onclick="fill()">Fill</button>-->
             <!--</tr>-->
-            <tr>
-                <td><label id="line_width_val">Brush Size 7</label></td>
-                <td><button id="pixel_plus" type="button" onclick="add_pixel()" style="width: 80px;">+</button></td>
-                <td><button id="pixel_minus" type="button" onclick="reduce_pixel()" style="width: 80px;">-</button></td>
-            </tr>
-            <tr>
-                <td><label id="vase_preset_val">Vase Outline 1</label></td>
-                <td><button id="vase_plus" type="button" onclick="next_vase()" style="width: 80px;">+</button></td>
-                <td><button id="vase_minus" type="button" onclick="prev_vase()" style="width: 80px;">-</button></td>
-            </tr>
-            <tr>
-                <td><label id="vase_fragment">Vase Fragment 1</label></td>
-                <td><button id="frag_plus" type="button" onclick="next_frag()" style="width: 80px;">+</button></td>
-                <td><button id="frag_minus" type="button" onclick="prev_frag()" style="width: 80px;">-</button></td>
-            </tr>
-            </table>
-            <table>
-                <tr>
-                {% for color in colors %}
-                {% if loop.index % per_row == 1 %}
-                </tr><tr>
-                {% endif %}
-                <td><button class='colorpicker' style="background-color: {{color}}" onclick="color('{{color}}')"></button>
-                {% endfor %}
-            </table>
-            <!--<label>file name</label><input id="fname" type="text"><button id="save" onclick="save()">Save</button>-->
-            </fieldset>
-            <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-            <script src=" {{ url_for('static', filename='script.js') }}"></script>
+            <div class="row">
+                <div class="col-sm-4"><label id="line_width_val">Brush Size 7</label></div>
+                <div class="col-xs-4"><button id="pixel_plus" type="button" onclick="add_pixel()">+</button></div>
+                <div class="col-xs-4"><button id="pixel_minus" type="button" onclick="reduce_pixel()">-</button></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><label id="vase_preset_val">Vase Outline 1</label></div>
+                <div class="col-xs-4"><button id="vase_plus" type="button" onclick="next_vase()">+</button></div>
+                <div class="col-xs-4"><button id="vase_minus" type="button" onclick="prev_vase()">-</button></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><label id="vase_fragment">Vase Fragment 1</label></div>
+                <div class="col-xs-4"><button id="frag_plus" type="button" onclick="next_frag()">+</button></div>
+                <div class="col-xs-4"><button id="frag_minus" type="button" onclick="prev_frag()">-</button></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <table id="colors">
+                    <tr>
+                    {% for color in colors %}
+                    {% if loop.index % per_row == 1 %}
+                    </tr><tr>
+                    {% endif %}
+                    <td><button class='colorpicker' style="background-color: {{color}}" onclick="color('{{color}}')"></button>
+                    {% endfor %}
+            </div>
+        </div>
+        <!--<label>file name</label><input id="fname" type="text"><button id="save" onclick="save()">Save</button>-->
+        </div>
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 {% endblock %}

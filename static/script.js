@@ -107,21 +107,16 @@ function prev_frag() {
 function pencil(){
         
     canvas.onmousedown = function(e){
-        curX = e.clientX - canvas.offsetLeft;
-        curY = e.clientY - canvas.offsetTop;
         hold = true;
-            
-        prevX = curX;
-        prevY = curY;
         ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
+        //ctx.moveTo(prevX, prevY);
     };
         
     canvas.onmousemove = function(e){
         if(hold){
             curX = e.clientX - canvas.offsetLeft;
             curY = e.clientY - canvas.offsetTop;
-            draw();
+            draw(e);
         }
     };
         
@@ -133,8 +128,8 @@ function pencil(){
         hold = false;
     };
         
-    function draw(){
-        ctx.lineTo(curX, curY);
+    function draw(e){
+        ctx.lineTo(e.offsetX, e.offsetY);
         ctx.stroke();
         canvas_data.pencil.push({ "startx": prevX, "starty": prevY, "endx": curX, "endy": curY, "thick": ctx.lineWidth, "color": ctx.strokeStyle });
     }
@@ -146,16 +141,16 @@ function line(){
            
     canvas.onmousedown = function (e){
         img = ctx.getImageData(0, 0, width, height);
-        prevX = e.clientX - canvas.offsetLeft;
-        prevY = e.clientY - canvas.offsetTop;
+        prevX = e.offsetX;
+        prevY = e.offsetY;
         hold = true;
     };
             
     canvas.onmousemove = function linemove(e){
         if (hold){
             ctx.putImageData(img, 0, 0);
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.offsetX;
+            curY = e.offsetY;
             ctx.beginPath();
             ctx.moveTo(prevX, prevY);
             ctx.lineTo(curX, curY);
@@ -180,16 +175,16 @@ function rectangle(){
             
     canvas.onmousedown = function (e){
         img = ctx.getImageData(0, 0, width, height);
-        prevX = e.clientX - canvas.offsetLeft;
-        prevY = e.clientY - canvas.offsetTop;
+        prevX = e.offsetX;
+        prevY = e.offsetY;
         hold = true;
     };
             
     canvas.onmousemove = function (e){
         if (hold){
             ctx.putImageData(img, 0, 0);
-            curX = e.clientX - canvas.offsetLeft - prevX;
-            curY = e.clientY - canvas.offsetTop - prevY;
+            curX = e.offsetX - prevX;
+            curY = e.offsetY - prevY;
             ctx.strokeRect(prevX, prevY, curX, curY);
             if (fill_value){
                 ctx.fillRect(prevX, prevY, curX, curY);
@@ -214,16 +209,16 @@ function circle(){
             
     canvas.onmousedown = function (e){
         img = ctx.getImageData(0, 0, width, height);
-        prevX = e.clientX - canvas.offsetLeft;
-        prevY = e.clientY - canvas.offsetTop;
+        prevX = e.offsetX;
+        prevY = e.offsetY;
         hold = true;
     };
             
     canvas.onmousemove = function (e){
         if (hold){
             ctx.putImageData(img, 0, 0);
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.offsetX;
+            curY = e.offsetY;
             ctx.beginPath();
             ctx.arc(Math.abs(curX + prevX)/2, Math.abs(curY + prevY)/2, Math.sqrt(Math.pow(curX - prevX, 2) + Math.pow(curY - prevY, 2))/2, 0, Math.PI * 2, true);
             ctx.closePath();
@@ -249,8 +244,8 @@ function circle(){
 function eraser(){
     
     canvas.onmousedown = function(e){
-        curX = e.clientX - canvas.offsetLeft;
-        curY = e.clientY - canvas.offsetTop;
+        curX = e.offsetX;
+        curY = e.offsetY;
         hold = true;
             
         prevX = curX;
@@ -261,8 +256,8 @@ function eraser(){
         
     canvas.onmousemove = function(e){
         if(hold){
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.offsetX;
+            curY = e.offsetY;
             draw();
         }
     };

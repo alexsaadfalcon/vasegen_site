@@ -1,35 +1,43 @@
-#toolset {
-    width     : 100px;
-    height    : 502px;
-    position  : absolute;
-    left      : 0px;
-    top       : 50px; 
-    //background: #35d128;
-    background: #6699ff;
+#toprow {
+    m2ax-width  :1200px;
 }
 
 #paint {
-    position  : absolute;
-    left      : 130px;
-    top       : 50px;
+    display     : inline-block;
+    border: 5px solid #000000;
+    min-height: 512px;
+    max-height: 512px;
+    min-width: 512px;
+    max-width: 512px;
     opacity   : 1.0;
+    //position  : absolute;
+    //left      : 130px;
+    //top       : 50px;
     //width     : 256px;
     //height    : 256px;
 }
 
 #vase {
-    position  : absolute;
-    left      : 653px;
-    top       : 50px;
+    display     : inline-block;
+    border: 5px solid #000000;
+    min-height: 60%;
+    max-height: 100%;
+    min-width: 60%;
+    max-width: 100%;
+    //position  : absolute;
+    //left      : 653px;
+    //top       : 50px;
     //width     : 256px;
     //height    : 256px;
 }
 
-#colorset {
-    position  : absolute;
-    left      : 0px;
-    top       : 590px;
-    width     : 860px;
+.centered {
+  margin: auto;
+  //display: inline-block;
+}
+
+.img-width {
+    width: 512px;
 }
  
 #title {
@@ -45,15 +53,28 @@
     border-style: solid;
 }
 
+#toolset {
+    background: #6699ff;
+    //width       : auto;
+    width     : 120px;
+    //height    : 512px;
+    //position  : absolute;
+    //left      : 50px;
+    //top       : 50px;
+    //background: #35d128;
+}
+
 #toolset button {
     //background: #358128;
     background: #3366cc;
     color     : #f3f3f3;
     width     : 100px;
     height    : 30px;
+    margin-left: 10px;
+    margin-left: 10px;
     border    : 1px solid #33842a;
-    -webkit-border-radius: 0 5px 5px 0;
-    -moz-border-radius: 0 15px 15px 0;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
@@ -67,4 +88,39 @@
 
 #toolset #resettool {
     background: #777777;
+}
+
+#controls button {
+    background: #3366cc;
+    color     : #f3f3f3;
+    height: 40px;
+    width: 40px;
+    border    : 1px solid #33842a;
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 15px 15px 0;
+    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+}
+
+#colorset {
+    position  : absolute;
+    left      : 0px;
+    top       : 590px;
+    width     : 860px;
+}
+
+#controls {
+    background: #6699ff;
+    color: #ffffff;
+}
+
+#controls .row {
+    width: 500px;
+}
+
+#colors {
+    display: inline-block;
+}
+
+#toolset2 {
+    width     : 120px;
 }
