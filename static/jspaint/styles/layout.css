@@ -403,13 +403,20 @@ html, body, .jspaint {
 
 .canvas-area {
 	flex: 1;
-	display: block !important;
-	position: relative;
+	display: inline-block !important;
+	!position: relative;
 	overflow: auto;
 	padding: 3px;
 }
+.vasegen-button {
+	display: inline-block;
+}
+.vasegen-image {
+	display: inline-block;
+}
 .main-canvas {
 	position: absolute;
+	display: inline-block;
 	z-index: 2;
 }
 .handle {

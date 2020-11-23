@@ -155,22 +155,35 @@ const $app = $(E("div")).addClass("jspaint").appendTo("body");
 const $V = $(E("div")).addClass("vertical").appendTo($app);
 const $H = $(E("div")).addClass("horizontal").appendTo($V);
 
-const $canvas_area = $(E("div")).addClass("canvas-area").appendTo($H);
+const $canvas_container = $(E("div")).addClass("container justify-content-start canvas-container").appendTo($H);
+const $canvas_area = $(E("div")).addClass("row justify-content-start canvas-area").appendTo($canvas_container);
 
-const $canvas = $(canvas).appendTo($canvas_area);
+const $canvas_col1 = make_col_div(5).appendTo($canvas_area)
+const $canvas = $(canvas).appendTo($canvas_col1);
 $canvas.attr("touch-action", "none");
+
+const $canvas_col2 = make_col_div(2).appendTo($canvas_area)
+vasegen = make_vasegen_button()
+vasegen.classList.add("vasegen-button");
+const $vasegen = $(vasegen).appendTo($canvas_col2)
+
+const $canvas_col3 = $(make_col_div(5)).appendTo($canvas_area)
+vasegen_image = make_vasegen_image()
+vasegen_image.classList.add("vasegen-image");
+const $vasegen_image = $(vasegen_image).appendTo($canvas_col3)
+
 let canvas_bounding_client_rect = canvas.getBoundingClientRect(); // cached for performance, updated later
 const getRect = ()=> ({left: 0, top: 0, width: canvas.width, height: canvas.height, right: canvas.width, bottom: canvas.height})
-const $canvas_handles = $Handles($canvas_area, getRect, {
-	outset: 4,
-	get_offset_left: ()=> parseFloat($canvas_area.css("padding-left")) + 1,
-	get_offset_top: ()=> parseFloat($canvas_area.css("padding-top")) + 1,
-	size_only: true,
-});
+//const $canvas_handles = $Handles($canvas_area, getRect, {
+//	outset: 4,
+//	get_offset_left: ()=> parseFloat($canvas_area.css("padding-left")) + 1,
+//	get_offset_top: ()=> parseFloat($canvas_area.css("padding-top")) + 1,
+//	size_only: true,
+//});
 // hack: fix canvas handles causing document to scroll when selecting/deselecting
 // by overriding these methods
-$canvas_handles.hide = ()=> { $canvas_handles.css({opacity: 0, pointerEvents: "none"}); };
-$canvas_handles.show = ()=> { $canvas_handles.css({opacity: "", pointerEvents: ""}); };
+//$canvas_handles.hide = ()=> { $canvas_handles.css({opacity: 0, pointerEvents: "none"}); };
+//$canvas_handles.show = ()=> { $canvas_handles.css({opacity: "", pointerEvents: ""}); };
 
 const $top = $(E("div")).addClass("component-area").prependTo($V);
 const $bottom = $(E("div")).addClass("component-area").appendTo($V);

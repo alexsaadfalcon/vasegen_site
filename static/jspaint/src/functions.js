@@ -17,6 +17,27 @@ const exclusive_params = [
 	"load",
 ];
 
+function make_vasegen_button() {
+    const button = E("button");
+    button.innerText = "Convert to Vase";
+//    button.onClick = ;
+    return button;
+}
+
+function make_col_div(n) {
+    const div = E("div");
+    return $(div).addClass("col-md-" + String(n));
+}
+
+function make_vasegen_image() {
+    const image = E("image");
+    image.src = "/vase";
+    image.href = "/vase";
+    image.width = 512;
+    image.height = 512;
+    return image
+}
+
 function get_all_url_params() {
 	const params = {};
 	location.hash.replace(/^#/, "").split(/,/).forEach((param_decl)=> {

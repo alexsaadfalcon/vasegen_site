@@ -8,6 +8,7 @@
 		<link href="/static/jspaint/styles/layout.css" rel="stylesheet" type="text/css">
 		<link href="/static/jspaint/styles/print.css" rel="stylesheet" type="text/css" media="print">
 		<link href="/static/jspaint/lib/os-gui/layout.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
 		<!-- <link href="lib/os-gui/windows-98.css" rel="stylesheet" type="text/css"> -->
 		<!-- <link href="lib/os-gui/windows-default.css" rel="stylesheet" type="text/css" title="Windows Default"> -->
 		<!-- <link href="lib/os-gui/peggys-pastels.css" rel="alternate stylesheet" type="text/css" title="Peggy's Pastels"> -->
@@ -282,6 +283,7 @@
 		<script src="/static/jspaint/src/sessions.js"></script>
 		<script src="/static/jspaint/lib/konami.js"></script>
 		<script src="/static/jspaint/src/vaporwave-fun.js"></script>
+        <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 		<script>
 			if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)){
