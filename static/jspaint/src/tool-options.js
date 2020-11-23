@@ -283,7 +283,7 @@ const $choose_airbrush_size = $Choose(
 		const source_x = image_width / l * i + shrink;
 		
 		return ChooserCanvas(
-			"images/options-airbrush-size.png",
+			"/static/jspaint/images/options-airbrush-size.png",
 			is_chosen, // invert if chosen
 			w, h, // width, height of created destination canvas
 			source_x, 0, w, h, // x, y, width, height from source image
