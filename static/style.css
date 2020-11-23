@@ -20,10 +20,10 @@
 #vase {
     display     : inline-block;
     border: 5px solid #000000;
-    min-height: 60%;
-    max-height: 100%;
-    min-width: 60%;
-    max-width: 100%;
+    min-height: 512px;
+    max-height: 512px;
+    min-width: 512px;
+    max-width: 512px;
     //position  : absolute;
     //left      : 653px;
     //top       : 50px;
@@ -33,11 +33,11 @@
 
 .centered {
   margin: auto;
-  //display: inline-block;
+  display: inline-block;
 }
 
 .img-width {
-    width: 512px;
+    width: 1024px;
 }
  
 #title {

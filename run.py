@@ -3,7 +3,7 @@ import sys
 import glob
 import json
 from flask import Flask, render_template, request, redirect, url_for, \
-    jsonify, send_file, abort
+    jsonify, send_file, send_from_directory, abort
 # import psycopg2
 
 from PIL import Image
@@ -104,7 +104,7 @@ colors = ['#' + color for color in colors]
 def paintapp():
     if request.method == 'GET':
         context = {'colors':colors, 'per_row':3}
-        return render_template("paint.html", **context)
+        return render_template("index.html", **context)
     if request.method == 'POST':
         canvas_image = request.form['drawn_image']
         try:
@@ -175,6 +175,10 @@ def preset_id(img_id):
         return abort(404)
     return send_file(presets[img_id], mimetype='image/jpeg')
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/jpeg')
 
 # @app.route('/save', methods=['GET', 'POST'])
 # def save():
