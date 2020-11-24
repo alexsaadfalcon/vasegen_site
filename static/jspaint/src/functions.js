@@ -68,31 +68,48 @@ function make_preset_div() {
     const plus = E("button");
     const minus = E("button");
 
+    val.innerText = "Vase Outline 0"
     plus.innerText = "+";
+    plus.onClick = () => next_vase();
+    minus.onClick = () => prev_vase();
     minus.innerText = "-";
 
     const $val = $(val).attr("id", "vase-preset-val").appendTo($preset);
     const $plus = $(plus).addClass().appendTo($preset);
     const $minus = $(minus).addClass().appendTo($preset);
-    return $preset
+    return [$preset, $plus, plus, $minus, minus]
+}
+
+function make_vase_controls() {
+    const ctrl = E("div");
+    const $ctrl = $(ctrl).addClass('vase-controls');
+    const [$preset, $preset_plus, preset_plus, $preset_minus, preset_minus] = make_preset_div();
+    $preset.appendTo($ctrl);
+    return [$ctrl, $preset_plus, preset_plus, $preset_minus, preset_minus]
 }
 
 function update_vase() {
     document.getElementById("vase-preset-val").innerText = 'Vase Outline ' + String(vasePreset);
-    var preset = new Image();
-    preset.src = 'preset/' + String(vasePreset);
-    preset.onload = function(){
-        ctx.drawImage(preset, 0, 0);
-    };
+    if (vasePreset === 0) {
+        clear();
+    } else {
+        var preset = new Image();
+        preset.src = 'preset/' + String(vasePreset);
+        preset.onload = function(){
+            ctx.drawImage(preset, 0, 0);
+        };
+    }
 }
 
 function next_vase() {
-    vasePreset = (vasePreset % numVases) + 1;
+    console.log("next_vase");
+    vasePreset = ((vasePreset + 1) % (numVases + 1));
     update_vase();
 }
 
 function prev_vase() {
-    vasePreset = (vasePreset - 2 + numVases) % numVases + 1;
+    console.log("prev_vase");
+    vasePreset = (vasePreset - 1 + (numVases + 1)) % (numVases + 1);
     update_vase();
 }
 

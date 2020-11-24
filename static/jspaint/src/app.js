@@ -153,6 +153,9 @@ if (location.search.match(/vertical-colors?-box/)) {
 const $app = $(E("div")).addClass("jspaint").appendTo("body");
 
 const $V = $(E("div")).addClass("vertical").appendTo($app);
+//const $preset = make_preset_div().appendTo($V)
+[$vase_controls, $preset_plus, preset_plus, $preset_minus, preset_minus] = make_vase_controls()
+$vase_controls.appendTo($V)
 const $H = $(E("div")).addClass("horizontal").appendTo($V);
 
 const $canvas_row = $(E("div")).addClass("row canvas-row").appendTo($H);
@@ -1447,6 +1450,16 @@ $canvas_row.on("pointerdown", e => {
         if($vasegen_button.is(e.target)){
 		    vasegen_button.onClick();
 		}
+    }
+});
+$preset_plus.on("pointerdown", e => {
+	if(e.button === 0){
+        preset_plus.onClick();
+    }
+});
+$preset_minus.on("pointerdown", e => {
+	if(e.button === 0){
+        preset_minus.onClick();
     }
 });
 
