@@ -165,6 +165,7 @@ $canvas.attr("touch-action", "none");
 const $canvas_col1 = $(E("div")).addClass("col-xl-1 col-xs-3").appendTo($canvas_row)
 vasegen_button = make_vasegen_button()
 vasegen_button.classList.add("vasegen-button");
+vasegen_button.classList.add("btn-danger");
 const $vasegen_button = $(vasegen_button).appendTo($canvas_col1)
 
 const $canvas_col2 = $(E("div")).addClass("col-xl-4 col-xs-2").addClass("canvas-area").appendTo($canvas_row)

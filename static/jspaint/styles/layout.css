@@ -426,12 +426,13 @@ html, body, .jspaint {
 	display: inline-block;
 	width: 100px;
 	height: 50px;
-    margin: auto 0px auto 0px;
+    margin: 0px 0px 0px 0px;
     !margin: 10px;
     !left: 0px;
     !position: absolute;
 }
 .vasegen-image {
+    margin: auto;
 	display: block;
 }
 .main-canvas {

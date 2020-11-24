@@ -56,6 +56,72 @@ function make_vasegen_image() {
     return img
 }
 
+var vasePreset = 0;
+var vaseFragment = 1;
+var numVases = 10;
+var numFrags = 17425;
+
+function make_preset_div() {
+    const preset = E("div");
+    const $preset = $(preset);
+    const val = E("div");
+    const plus = E("button");
+    const minus = E("button");
+
+    plus.innerText = "+";
+    minus.innerText = "-";
+
+    const $val = $(val).attr("id", "vase-preset-val").appendTo($preset);
+    const $plus = $(plus).addClass().appendTo($preset);
+    const $minus = $(minus).addClass().appendTo($preset);
+    return $preset
+}
+
+function update_vase() {
+    document.getElementById("vase-preset-val").innerText = 'Vase Outline ' + String(vasePreset);
+    var preset = new Image();
+    preset.src = 'preset/' + String(vasePreset);
+    preset.onload = function(){
+        ctx.drawImage(preset, 0, 0);
+    };
+}
+
+function next_vase() {
+    vasePreset = (vasePreset % numVases) + 1;
+    update_vase();
+}
+
+function prev_vase() {
+    vasePreset = (vasePreset - 2 + numVases) % numVases + 1;
+    update_vase();
+}
+
+function update_frag() {
+    document.getElementById("vase-fragment-val").innerText = 'Vase Fragment ' + String(vaseFragment);
+    var frag = new Image();
+    frag.src = 'fragment/' + String(vaseFragment);
+    frag.onload = function(){
+        var pattern = ctx.createPattern(this, "repeat");
+        ctx.fillStyle = pattern;
+        ctx.fill();
+    };
+}
+
+function random_fragment() {
+    vaseFragment = Math.floor((Math.random() * numFrags));
+    update_frag();
+}
+
+function next_frag() {
+    vaseFragment = (vaseFragment % numFrags) + 1;
+    update_frag();
+}
+
+function prev_frag() {
+    vaseFragment = (vaseFragment - 2 + numFrags) % numFrags + 1;
+    update_frag();
+}
+
 function get_all_url_params() {
 	const params = {};
 	location.hash.replace(/^#/, "").split(/,/).forEach((param_decl)=> {
