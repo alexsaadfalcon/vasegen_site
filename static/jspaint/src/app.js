@@ -156,18 +156,18 @@ const $V = $(E("div")).addClass("vertical").appendTo($app);
 const $H = $(E("div")).addClass("horizontal").appendTo($V);
 
 const $canvas_row = $(E("div")).addClass("row canvas-row").appendTo($H);
-const $canvas_col0 = make_col_div(5).appendTo($canvas_row)
+const $canvas_col0 = $(E("div")).addClass("col-xl-5 col-xs-1 max-512").appendTo($canvas_row)
 const $canvas_area = $(E("div")).addClass("canvas-area").appendTo($canvas_col0);
 
 const $canvas = $(canvas).appendTo($canvas_area);
 $canvas.attr("touch-action", "none");
 
-const $canvas_col1 = make_col_div(1).appendTo($canvas_row)
+const $canvas_col1 = $(E("div")).addClass("col-xl-1 col-xs-3").appendTo($canvas_row)
 vasegen_button = make_vasegen_button()
 vasegen_button.classList.add("vasegen-button");
 const $vasegen_button = $(vasegen_button).appendTo($canvas_col1)
 
-const $canvas_col2 = $(make_col_div(4)).addClass("canvas-area").appendTo($canvas_row)
+const $canvas_col2 = $(E("div")).addClass("col-xl-4 col-xs-2").addClass("canvas-area").appendTo($canvas_row)
 vasegen_image = make_vasegen_image()
 vasegen_image.classList.add("vasegen-image");
 const $vasegen_image = $(vasegen_image).appendTo($canvas_col2)

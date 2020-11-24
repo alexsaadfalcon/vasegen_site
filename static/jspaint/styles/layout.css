@@ -418,14 +418,17 @@ html, body, .jspaint {
 }
 .canvas-row {
     width: 100%;
+    max-width: 1307px;
 }
 .canvas-container {
 }
 .vasegen-button {
-	display: block;
+	display: inline-block;
 	width: 100px;
 	height: 50px;
-    !margin: 0;
+    margin: auto 0px auto 0px;
+    !margin: 10px;
+    !left: 0px;
     !position: absolute;
 }
 .vasegen-image {
