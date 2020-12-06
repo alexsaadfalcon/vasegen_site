@@ -20,7 +20,7 @@ if not os.path.exists(TMPDIR):
 
 app = Flask(__name__)
 
-colors = [
+_colors_orig = [
     '#000000',
     '#B0171F',
     '#DA70D6',
