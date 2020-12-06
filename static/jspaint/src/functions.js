@@ -59,7 +59,7 @@ function make_vasegen_image() {
 var vasePreset = 0;
 var vaseFragment = 1;
 var numVases = 10;
-var numFrags = 17404;
+var numFrags = 1136;
 
 function make_preset_div() {
     const preset = E("div");
