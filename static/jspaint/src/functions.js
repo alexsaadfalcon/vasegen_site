@@ -59,7 +59,7 @@ function make_vasegen_image() {
 var vasePreset = 0;
 var vaseFragment = 1;
 var numVases = 10;
-var numFrags = 17425;
+var numFrags = 17404;
 
 function make_preset_div() {
     const preset = E("div");
@@ -67,25 +67,33 @@ function make_preset_div() {
     const val = E("div");
     const plus = E("button");
     const minus = E("button");
+    const zero = E("button");
+    const reset = E("button");
 
     val.innerText = "Vase Outline 0"
     plus.innerText = "+";
+    minus.innerText = "-";
+    zero.innerText = "o";
+    reset.innerText = "reset";
     plus.onClick = () => next_vase();
     minus.onClick = () => prev_vase();
-    minus.innerText = "-";
+    zero.onClick = () => zero_vase();
+    reset.onClick = () => reset_vase();
 
     const $val = $(val).attr("id", "vase-preset-val").appendTo($preset);
     const $plus = $(plus).addClass().appendTo($preset);
     const $minus = $(minus).addClass().appendTo($preset);
-    return [$preset, $plus, plus, $minus, minus]
+    const $zero = $(zero).addClass().appendTo($preset);
+    const $reset = $(reset).addClass().appendTo($preset);
+    return [$preset, $plus, plus, $minus, minus, $zero, zero, $reset, reset]
 }
 
 function make_vase_controls() {
     const ctrl = E("div");
     const $ctrl = $(ctrl).addClass('vase-controls');
-    const [$preset, $preset_plus, preset_plus, $preset_minus, preset_minus] = make_preset_div();
+    const [$preset, $plus, plus, $minus, minus, $zero, zero, $reset, reset] = make_preset_div();
     $preset.appendTo($ctrl);
-    return [$ctrl, $preset_plus, preset_plus, $preset_minus, preset_minus]
+    return [$ctrl, $plus, plus, $minus, minus, $zero, zero, $reset, reset]
 }
 
 function update_vase() {
@@ -102,15 +110,57 @@ function update_vase() {
 }
 
 function next_vase() {
-    console.log("next_vase");
     vasePreset = ((vasePreset + 1) % (numVases + 1));
     update_vase();
 }
 
 function prev_vase() {
-    console.log("prev_vase");
     vasePreset = (vasePreset - 1 + (numVases + 1)) % (numVases + 1);
     update_vase();
+}
+
+function zero_vase() {
+    vasePreset = 0;
+    update_vase();
+}
+
+function reset_vase() {
+    update_vase();
+}
+
+function make_frag_div() {
+    const frag = E("div");
+    const $frag = $(frag);
+    const val = E("div");
+    const plus = E("button");
+    const minus = E("button");
+    const zero = E("button");
+    const rand = E("button");
+
+    val.innerText = "Vase Fragment 0"
+    plus.innerText = "+";
+    minus.innerText = "-";
+    zero.innerText = "o";
+    rand.innerText = "randomize";
+    plus.onClick = () => next_frag();
+    minus.onClick = () => prev_frag();
+    zero.onClick = () => zero_frag();
+    rand.onClick = () => rand_frag();
+
+    const $val = $(val).attr("id", "vase-fragment-val").appendTo($frag);
+    const $plus = $(plus).addClass().appendTo($frag);
+    const $minus = $(minus).addClass().appendTo($frag);
+    const $zero = $(zero)//.addClass().appendTo($frag);
+    const $rand = $(rand).addClass().appendTo($frag);
+    return [$frag, $plus, plus, $minus, minus, $zero, zero, $rand, rand]
+}
+
+function make_frag_controls() {
+    const ctrl = E("div");
+    const $ctrl = $(ctrl).addClass('fragment-controls');
+    const [$frag, $plus, plus, $minus, minus, $zero, zero, $rand, rand] = make_frag_div();
+    $frag.appendTo($ctrl);
+    return [$ctrl, $plus, plus, $minus, minus, $zero, zero, $rand, rand]
 }
 
 function update_frag() {
@@ -124,11 +174,6 @@ function update_frag() {
     };
 }
 
-function random_fragment() {
-    vaseFragment = Math.floor((Math.random() * numFrags));
-    update_frag();
-}
-
 function next_frag() {
     vaseFragment = (vaseFragment % numFrags) + 1;
     update_frag();
@@ -136,6 +181,15 @@ function next_frag() {
 
 function prev_frag() {
     vaseFragment = (vaseFragment - 2 + numFrags) % numFrags + 1;
+    update_frag();
+}
+
+function zero_frag() {
+    update_vase();
+}
+
+function rand_frag() {
+    vaseFragment = Math.floor((Math.random() * numFrags));
     update_frag();
 }
 

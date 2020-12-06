@@ -154,8 +154,19 @@ const $app = $(E("div")).addClass("jspaint").appendTo("body");
 
 const $V = $(E("div")).addClass("vertical").appendTo($app);
 //const $preset = make_preset_div().appendTo($V)
-[$vase_controls, $preset_plus, preset_plus, $preset_minus, preset_minus] = make_vase_controls()
+[$vase_controls,
+$preset_plus, preset_plus,
+$preset_minus, preset_minus,
+$preset_zero, preset_zero,
+$preset_reset, preset_reset] = make_vase_controls();
+[$frag_controls,
+$frag_plus, frag_plus,
+$frag_minus, frag_minus,
+$frag_zero, frag_zero,
+$frag_rand, frag_rand] = make_frag_controls();
+
 $vase_controls.appendTo($V)
+$frag_controls.appendTo($V)
 const $H = $(E("div")).addClass("horizontal").appendTo($V);
 
 const $canvas_row = $(E("div")).addClass("row canvas-row").appendTo($H);
@@ -178,12 +189,12 @@ const $vasegen_image = $(vasegen_image).appendTo($canvas_col2)
 
 let canvas_bounding_client_rect = canvas.getBoundingClientRect(); // cached for performance, updated later
 const getRect = ()=> ({left: 0, top: 0, width: canvas.width, height: canvas.height, right: canvas.width, bottom: canvas.height})
-//const $canvas_handles = $Handles($canvas_area, getRect, {
-//	outset: 4,
-//	get_offset_left: ()=> parseFloat($canvas_area.css("padding-left")) + 1,
-//	get_offset_top: ()=> parseFloat($canvas_area.css("padding-top")) + 1,
-//	size_only: true,
-//});
+const $canvas_handles = $Handles($canvas_area, getRect, {
+	outset: 4,
+	get_offset_left: ()=> parseFloat($canvas_area.css("padding-left")) + 1,
+	get_offset_top: ()=> parseFloat($canvas_area.css("padding-top")) + 1,
+	size_only: true,
+});
 // hack: fix canvas handles causing document to scroll when selecting/deselecting
 // by overriding these methods
 //$canvas_handles.hide = ()=> { $canvas_handles.css({opacity: 0, pointerEvents: "none"}); };
@@ -1460,6 +1471,36 @@ $preset_plus.on("pointerdown", e => {
 $preset_minus.on("pointerdown", e => {
 	if(e.button === 0){
         preset_minus.onClick();
+    }
+});
+$preset_zero.on("pointerdown", e => {
+	if(e.button === 0){
+        preset_zero.onClick();
+    }
+});
+$preset_reset.on("pointerdown", e => {
+	if(e.button === 0){
+        preset_reset.onClick();
+    }
+});
+$frag_plus.on("pointerdown", e => {
+	if(e.button === 0){
+        frag_plus.onClick();
+    }
+});
+$frag_minus.on("pointerdown", e => {
+	if(e.button === 0){
+        frag_minus.onClick();
+    }
+});
+$frag_zero.on("pointerdown", e => {
+	if(e.button === 0){
+        frag_zero.onClick();
+    }
+});
+$frag_rand.on("pointerdown", e => {
+	if(e.button === 0){
+        frag_rand.onClick();
     }
 });
 

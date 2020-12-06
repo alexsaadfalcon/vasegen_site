@@ -401,20 +401,26 @@ html, body, .jspaint {
 }
 
 .canvas-area {
-    min-width: 530px;
-    max-width: 530px;
-    min-height: 530px;
-    max-height: 530px;
+    min-width: 539px;
+    max-width: 539px;
+    min-height: 539px;
+    max-height: 539px;
 	flex: 1;
 	display: block !important;
 	position: relative;
 	overflow: auto;
 }
 .max-512 {
-    min-width: 530px;
-    max-width: 530px;
-    min-height: 530px;
-    max-height: 530px;
+    min-width: 539px;
+    max-width: 539px;
+    min-height: 539px;
+    max-height: 539px;
+}
+#vase-preset-val {
+    min-width: 150px;
+}
+#vase-fragment-val {
+    min-width: 150px;
 }
 .canvas-row {
     width: 100%;
