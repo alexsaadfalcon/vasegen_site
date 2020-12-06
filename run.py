@@ -154,7 +154,7 @@ def vase():
 def vase_outline():
     return send_file('vase_outline.jpg', mimetype='image/jpeg')
 
-frags = glob.glob(app.root_path + '/fragments/*.jpg')
+frags = glob.glob(app.root_path + '/chopped/*.jpg')
 split_id = lambda f: int(os.path.splitext(os.path.split(f)[-1])[0])
 id_dict = {split_id(f): f for f in frags}
 ind_dict = {n: f for n, f in enumerate(frags)}
