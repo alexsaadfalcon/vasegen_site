@@ -29,6 +29,7 @@ function convert_success(resp) {
 }
 
 function vasegen() {
+    deselect();
     var image = canvas.toDataURL('image/png');
 
     resp = $.ajax({
@@ -58,7 +59,7 @@ function make_vasegen_image() {
 
 var vasePreset = 0;
 var vaseFragment = 1;
-var numVases = 10;
+var numVases = 11;
 var numFrags = 1125;
 
 function make_preset_div() {
@@ -141,7 +142,7 @@ function make_frag_div() {
     plus.innerText = "+";
     minus.innerText = "-";
     zero.innerText = "o";
-    rand.innerText = "randomize";
+    rand.innerText = "random";
     plus.onClick = () => next_frag();
     minus.onClick = () => prev_frag();
     zero.onClick = () => zero_frag();
@@ -150,7 +151,7 @@ function make_frag_div() {
     const $val = $(val).attr("id", "vase-fragment-val").appendTo($frag);
     const $plus = $(plus).addClass().appendTo($frag);
     const $minus = $(minus).addClass().appendTo($frag);
-    const $zero = $(zero)//.addClass().appendTo($frag);
+    const $zero = $(zero).addClass().appendTo($frag);
     const $rand = $(rand).addClass().appendTo($frag);
     return [$frag, $plus, plus, $minus, minus, $zero, zero, $rand, rand]
 }
@@ -163,15 +164,15 @@ function make_frag_controls() {
     return [$ctrl, $plus, plus, $minus, minus, $zero, zero, $rand, rand]
 }
 
+let paste_locx = 0;
+let paste_locy = 0;
 function update_frag() {
     document.getElementById("vase-fragment-val").innerText = 'Vase Fragment ' + String(vaseFragment);
-    var frag = new Image();
-    frag.src = 'fragment/' + String(vaseFragment);
-    frag.onload = function(){
-        var pattern = ctx.createPattern(this, "repeat");
-        ctx.fillStyle = pattern;
-        ctx.fill();
-    };
+    delete_selection();
+    reset_vase();
+    paste_locx = 128;
+    paste_locy = 128;
+    paste_image_from_URI('fragment/' + String(vaseFragment));
 }
 
 function next_frag() {
@@ -1194,12 +1195,14 @@ function show_news(){
 
 // @TODO: DRY between these functions and open_from_* functions further?
 
-// function paste_image_from_URI(uri, callback){
-// 	load_image_from_URI(uri, (err, img)=> {
-// 		if(err){ return callback(err); }
-// 		paste(img);
-// 	});
-// };
+function paste_image_from_URI(uri, callback){
+    load_image_from_URI(uri, (err, img)=> {
+        if(err){ return callback(err); }
+        paste(img);
+        paste_locx = 0;
+        paste_locy = 0;
+    });
+};
 
 function paste_image_from_file(file){
 	const blob_url = URL.createObjectURL(file);
@@ -1228,7 +1231,6 @@ function paste_from_file_select_dialog(){
 }
 
 function paste(img){
-
 	if(img.width > canvas.width || img.height > canvas.height){
 		const $w = new $FormToolWindow().addClass("dialogue-window");
 		$w.title("Paint");
@@ -1261,8 +1263,8 @@ function paste(img){
 	function do_the_paste(){
 		deselect();
 		select_tool(get_tool_by_name("Select"));
-		const x = Math.max(0, Math.ceil($canvas_area.scrollLeft() / magnification));
-		const y = Math.max(0, Math.ceil($canvas_area.scrollTop() / magnification));
+		const x = Math.max(paste_locx, Math.ceil($canvas_area.scrollLeft() / magnification));
+		const y = Math.max(paste_locy, Math.ceil($canvas_area.scrollTop() / magnification));
 
 		undoable({
 			name: "Paste",
