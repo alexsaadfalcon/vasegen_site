@@ -8,7 +8,7 @@ ctx.lineWidth = 7;
 var vasePreset = 1;
 var vaseFragment = 1;
 var numVases = 10;
-var numFrags = 17425;
+var numFrags = 1125;
 var fill_value = false;
 var stroke_value = true;
 var canvas_data = {"pencil": [], "line": [], "rectangle": [], "circle": [], "eraser": []}
@@ -79,7 +79,7 @@ function prev_vase() {
 function update_frag() {
     document.getElementById("vase_fragment").innerText = 'Vase Fragment ' + String(vaseFragment);
     var frag = new Image();
-    frag.src = 'fragment/' + String(vaseFragment);
+    frag.src = 'chopped/' + String(vaseFragment);
     frag.onload = function(){
         var pattern = ctx.createPattern(this, "repeat");
         ctx.fillStyle = pattern;
