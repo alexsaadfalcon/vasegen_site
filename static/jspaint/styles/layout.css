@@ -401,20 +401,20 @@ html, body, .jspaint {
 }
 
 .canvas-area {
-    min-width: 539px;
-    max-width: 539px;
-    min-height: 539px;
-    max-height: 539px;
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
 	flex: 1;
 	display: block !important;
 	position: relative;
-	overflow: auto;
+	overflow: hidden;
 }
 .max-512 {
-    min-width: 539px;
-    max-width: 539px;
-    min-height: 539px;
-    max-height: 539px;
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
 }
 #vase-preset-val {
     min-width: 140px;
@@ -425,6 +425,7 @@ html, body, .jspaint {
 .canvas-row {
     width: 100%;
     max-width: 1307px;
+    overflow: scroll;
 }
 .canvas-container {
 }
