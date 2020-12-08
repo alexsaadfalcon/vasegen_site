@@ -182,7 +182,7 @@ vasegen_button.classList.add("vasegen-button");
 vasegen_button.classList.add("btn-danger");
 const $vasegen_button = $(vasegen_button).appendTo($canvas_col1)
 
-const $canvas_col2 = $(E("div")).addClass("col-xl-4 col-xs-2").addClass("canvas-area").appendTo($canvas_row)
+const $canvas_col2 = $(E("div")).addClass("col-xl-4 col-xs-2 canvas-area-2").appendTo($canvas_row)
 vasegen_image = make_vasegen_image()
 vasegen_image.classList.add("vasegen-image");
 const $vasegen_image = $(vasegen_image).appendTo($canvas_col2)

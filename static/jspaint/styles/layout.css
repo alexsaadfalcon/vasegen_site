@@ -410,6 +410,16 @@ html, body, .jspaint {
 	position: relative;
 	overflow: hidden;
 }
+.canvas-area-2 {
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
+	flex: 1;
+	display: block !important;
+	position: relative;
+	overflow: show;
+}
 .max-512 {
     min-width: 530px;
     max-width: 530px;
@@ -434,13 +444,20 @@ html, body, .jspaint {
 	width: 100px;
 	height: 50px;
     margin: 0px 0px 0px 0px;
+    margin-left: 14px;
     !margin: 10px;
     !left: 0px;
     !position: absolute;
 }
 .vasegen-image {
+    min-width: 530px;
+    max-width: 530px;
+    min-height: 530px;
+    max-height: 530px;
     margin: auto;
 	display: block;
+	padding: 10px;
+	border: solid 1px gray;
 }
 .main-canvas {
 	position: absolute;
