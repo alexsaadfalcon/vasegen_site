@@ -24,19 +24,34 @@ function make_vasegen_button() {
     return button;
 }
 
+let vasegen_success = true;
 function convert_success(resp) {
+    vasegen_success = true;
     document.getElementById("vase").src = 'data:image/jpg;base64,' + resp;
 }
 
+function convert_complete(resp) {
+    if (!vasegen_success) {
+        vasegen_button.innerText = "FAILED! Try Again";
+    }
+    vasegen_button.classList = 'vasegen-button btn-danger';
+    vasegen_button.disabled = false;
+}
+
+
 function vasegen() {
+    vasegen_button.classList = 'vasegen-button btn-disabled';
+    vasegen_button.disabled = true;
     deselect();
     var image = canvas.toDataURL('image/png');
 
+    vasegen_success = false;
     resp = $.ajax({
         type: "POST",
         url: "/",
         data: { drawn_image: image },
         success: convert_success,
+        complete: convert_complete,
 //        dataType: "json",
     });
 
